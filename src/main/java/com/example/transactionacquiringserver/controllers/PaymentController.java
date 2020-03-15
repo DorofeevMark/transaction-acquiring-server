@@ -18,9 +18,8 @@ public class PaymentController {
     private PaymentSystemService paymentSystemService;
 
     @PostMapping(path = "/proceed", consumes = "application/json", produces = "application/json")
-    public Map<String, PaymentSystem> payment(@RequestBody PaymentInfo paymentInfo) {
-        PaymentSystem paymentSystem = paymentSystemService.getPaymentSystemByBIN(paymentInfo.getCard().getBin());
-        return Collections.singletonMap("response", paymentSystem);
+    public Map<String, String> payment(@RequestBody PaymentInfo paymentInfo) {
+        return Collections.singletonMap("response", paymentSystemService.sendRequestToPaymentService(paymentInfo));
     }
 }
 
