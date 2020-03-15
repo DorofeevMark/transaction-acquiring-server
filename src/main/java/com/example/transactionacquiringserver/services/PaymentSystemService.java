@@ -26,10 +26,9 @@ public class PaymentSystemService {
     private CardInfoRepository cardInfoRepository;
     @Autowired
     private PaymentSystemRepository paymentSystemRepository;
-    private ArrayList<PaymentSystem> services = new ArrayList<PaymentSystem>();
 
     public PaymentSystem getPaymentSystemByBIN(String bin) {
-        services = (ArrayList<PaymentSystem>) paymentSystemRepository.findAll();
+        ArrayList<PaymentSystem> services = (ArrayList<PaymentSystem>) paymentSystemRepository.findAll();
         for (PaymentSystem service : services) {
             if (bin.matches(service.getPatter())) {
                 return service;
