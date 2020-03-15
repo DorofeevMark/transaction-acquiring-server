@@ -15,6 +15,10 @@ public class TransactionLog {
     @JoinColumn(name = "paymentId", referencedColumnName = "id")
     private PaymentInfo paymentInfo;
 
+    @OneToOne
+    @JoinColumn(name = "paymentSystemId", referencedColumnName = "id")
+    private PaymentSystem paymentSystem;
+
 
     public Integer getId() {
         return id;
@@ -32,6 +36,10 @@ public class TransactionLog {
         return paymentInfo;
     }
 
+    public PaymentSystem getPaymentSystem() {
+        return paymentSystem;
+    }
+
     public void setResponse(String response) {
         this.response = response;
     }
@@ -46,5 +54,9 @@ public class TransactionLog {
 
     public void setPaymentInfo(PaymentInfo paymentInfo) {
         this.paymentInfo = paymentInfo;
+    }
+
+    public void setPaymentSystem(PaymentSystem paymentSystem) {
+        this.paymentSystem = paymentSystem;
     }
 }
