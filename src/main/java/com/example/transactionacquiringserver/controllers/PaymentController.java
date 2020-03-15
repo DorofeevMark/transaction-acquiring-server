@@ -1,6 +1,7 @@
 package com.example.transactionacquiringserver.controllers;
 
 import com.example.transactionacquiringserver.models.CardInfo;
+import com.example.transactionacquiringserver.models.PaymentInfo;
 import com.example.transactionacquiringserver.models.PaymentSystem;
 import com.example.transactionacquiringserver.services.PaymentSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class PaymentController {
     private PaymentSystemService paymentSystemService;
 
     @PostMapping(path = "/proceed", consumes = "application/json", produces = "application/json")
-    public Map<String, PaymentSystem> payment(@RequestBody CardInfo cardInfo) {
-        PaymentSystem paymentSystem = paymentSystemService.getPaymentSystemByBIN(cardInfo.getBin());
+    public Map<String, PaymentSystem> payment(@RequestBody PaymentInfo paymentInfo) {
+        PaymentSystem paymentSystem = paymentSystemService.getPaymentSystemByBIN(paymentInfo.getCard().getBin());
         return Collections.singletonMap("response", paymentSystem);
     }
 }
