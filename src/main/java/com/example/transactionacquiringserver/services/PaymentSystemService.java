@@ -39,7 +39,7 @@ public class PaymentSystemService {
 
     public String sendRequestToPaymentService(PaymentInfo paymentInfo) {
         PaymentSystem paymentSystem = this.getPaymentSystemByBIN(paymentInfo.getCard().getBin());
-        String response = this.restClientService.post(paymentSystem.getEndpoint(), "");
+        String response = this.restClientService.post(paymentSystem.getEndpoint(), paymentInfo.toString());
 
         cardInfoRepository.save(paymentInfo.getCard());
         paymentInfoRepository.save(paymentInfo);

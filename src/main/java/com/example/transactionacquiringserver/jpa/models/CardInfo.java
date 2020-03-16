@@ -1,8 +1,6 @@
 package com.example.transactionacquiringserver.jpa.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -52,5 +50,16 @@ public class CardInfo {
 
     public void setExpirationYear(String expirationYear) {
         this.expirationYear = expirationYear;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"bin\": " + '"' + bin + '"' + "," +
+                "\"cardholderName\": " + '"' + cardholderName + '"' + "," +
+                "\"expirationMonth\": " + '"' + expirationMonth + '"' + "," +
+                "\"expirationYear\": " + '"' + expirationYear + '"' + "," +
+                "\"cvv\": " + cvv +
+                "}";
     }
 }
