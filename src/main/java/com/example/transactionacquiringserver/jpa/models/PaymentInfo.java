@@ -46,15 +46,4 @@ public class PaymentInfo {
     public void setMerchantId(String merchantId) {
         this.merchantId = merchantId;
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\"id\": " + id + "," +
-                "\"card\": " + card + "," +
-                "\"amount\": " + amount + "," +
-                "\"currency\": " + '"' + currency + '"' + "," +
-                "\"merchantId\": " + '"' + merchantId + '"' +
-                '}';
-    }
 }

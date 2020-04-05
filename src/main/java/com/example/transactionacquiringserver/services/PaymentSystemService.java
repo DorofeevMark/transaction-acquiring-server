@@ -7,6 +7,8 @@ import com.example.transactionacquiringserver.jpa.repositories.PaymentSystemRepo
 import com.example.transactionacquiringserver.jpa.repositories.TransactionLogRepository;
 import com.example.transactionacquiringserver.jpa.models.PaymentInfo;
 import com.example.transactionacquiringserver.jpa.models.PaymentSystem;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +39,11 @@ public class PaymentSystemService {
         return null;
     }
 
-    public String sendRequestToPaymentService(PaymentInfo paymentInfo) {
+    public String sendRequestToPaymentService(PaymentInfo paymentInfo) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+
         PaymentSystem paymentSystem = this.getPaymentSystemByBIN(paymentInfo.getCard().getBin());
-        String response = this.restClientService.post(paymentSystem.getEndpoint(), paymentInfo.toString());
+        String response = this.restClientService.post(paymentSystem.getEndpoint(), objectMapper.writeValueAsString(paymentInfo));
 
         cardInfoRepository.save(paymentInfo.getCard());
         paymentInfoRepository.save(paymentInfo);

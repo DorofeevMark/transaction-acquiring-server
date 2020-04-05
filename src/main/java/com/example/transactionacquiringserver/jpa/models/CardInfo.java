@@ -51,15 +51,4 @@ public class CardInfo {
     public void setExpirationYear(String expirationYear) {
         this.expirationYear = expirationYear;
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\"bin\": " + '"' + bin + '"' + "," +
-                "\"cardholderName\": " + '"' + cardholderName + '"' + "," +
-                "\"expirationMonth\": " + '"' + expirationMonth + '"' + "," +
-                "\"expirationYear\": " + '"' + expirationYear + '"' + "," +
-                "\"cvv\": " + cvv +
-                "}";
-    }
 }
