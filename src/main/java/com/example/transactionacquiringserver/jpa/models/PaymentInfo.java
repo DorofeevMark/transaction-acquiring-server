@@ -1,7 +1,5 @@
 package com.example.transactionacquiringserver.jpa.models;
 
-import com.example.transactionacquiringserver.jpa.models.CardInfo;
-
 import javax.persistence.*;
 
 @Entity
